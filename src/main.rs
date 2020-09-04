@@ -1,12 +1,10 @@
-mod hoge;
-
-mod fuga {
-    pub fn hello_module() {
-        println!("Hello, module fuga!");
-    }
+// from https://doc.rust-lang.org/book/ch04-02-references-and-borrowing.html
+fn main() {
+    let s1 = String::from("hello");
+    let len = calculate_length(&s1);
+    println!("The length of '{}' is {}.", s1, len);
 }
 
-fn main() {
-    hoge::hello_module();
-    fuga::hello_module();
+fn calculate_length(s: &String) -> usize {
+    s.len()
 }
