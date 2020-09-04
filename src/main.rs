@@ -1,10 +1,6 @@
-// from https://doc.rust-lang.org/book/ch04-02-references-and-borrowing.html
-fn main() {
-    let s1 = String::from("hello");
-    let len = calculate_length(&s1);
-    println!("The length of '{}' is {}.", s1, len);
-}
+extern crate moromoro;
 
-fn calculate_length(s: &String) -> usize {
-    s.len()
+pub fn main() {
+    let x = moromoro::adder(1, 2);
+    println!("{}", x);
 }
