@@ -42,12 +42,9 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
 `cargo test` で実行したバイナリの中にはテストコード用のシンボルがある
 
 ```
-$ strings < target/debug/deps/rust_moromoro-c09a9e232855ac1e | grep test_adder
- right: ``src/main.rstest_adder1
-__ZN13rust_moromoro11test_adder128_$u7b$$u7b$closure$u7d$$u7d$17h00271a53d7a8da4cE
-__ZN13rust_moromoro11test_adder117hb01269150e06d730E
-__ZN13rust_moromoro11test_adder128_$u7b$$u7b$closure$u7d$$u7d$17h00271a53d7a8da4cE
-__ZN13rust_moromoro11test_adder117hb01269150e06d730E
+$ nm target/debug/deps/rust_moromoro-c09a9e232855ac1e | grep test_adder
+0000000100001810 t __ZN13rust_moromoro11test_adder117hb01269150e06d730E
+00000001000016b0 t __ZN13rust_moromoro11test_adder128_$u7b$$u7b$closure$u7d$$u7d$17h00271a53d7a8da4cE
 ```
 
 が、普通にビルドしたバイナリの中にはない。
@@ -56,6 +53,6 @@ __ZN13rust_moromoro11test_adder117hb01269150e06d730E
 $ cargo build
    Compiling rust-moromoro v0.1.0 (...)
     Finished dev [unoptimized + debuginfo] target(s) in 0.58s
-$ strings < target/debug/rust-moromoro | grep test_adder
+$ nm target/debug/rust-moromoro | grep test_adder
 (無)
 ```
