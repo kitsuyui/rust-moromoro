@@ -2,17 +2,21 @@ trait Bits {
     fn bit_count(self) -> u32;
 }
 
-impl Bits for u8 {
-    fn bit_count(self) -> u32 {
-        self.count_ones()
-    }
+macro_rules! impl_Bits {
+    ($T:ty) => {
+        impl Bits for $T {
+            fn bit_count(self) -> u32 {
+                self.count_ones()
+            }
+        }
+    };
 }
 
-impl Bits for u16 {
-    fn bit_count(self) -> u32 {
-        self.count_ones()
-    }
-}
+impl_Bits!(u8);
+impl_Bits!(u16);
+impl_Bits!(u32);
+impl_Bits!(u64);
+impl_Bits!(u128);
 
 #[cfg(test)]
 pub mod tests {
