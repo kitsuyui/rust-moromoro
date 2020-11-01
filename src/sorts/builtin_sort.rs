@@ -1,3 +1,3 @@
-pub fn sort(slice: &mut [i32]) {
+pub fn sort<T: Ord>(slice: &mut [T]) {
     slice.sort();
 }

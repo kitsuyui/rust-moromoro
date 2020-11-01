@@ -1,4 +1,4 @@
-pub fn sort(slice: &mut [i32]) {
+pub fn sort<T: Ord>(slice: &mut [T]) {
     let mut i: usize = 0;
     let size = slice.len();
     while i < size {
@@ -12,7 +12,7 @@ pub fn sort(slice: &mut [i32]) {
     }
 }
 
-fn up_heap(slice: &mut [i32], n: usize) {
+fn up_heap<T: Ord>(slice: &mut [T], n: usize) {
     let mut n = n;
     while n > 0 {
         let parent = (n + 1) / 2 - 1;
@@ -25,7 +25,7 @@ fn up_heap(slice: &mut [i32], n: usize) {
     }
 }
 
-fn down_heap(slice: &mut [i32], n: usize) {
+fn down_heap<T: Ord>(slice: &mut [T], n: usize) {
     let mut m = 0;
     let mut tmp = 0;
     loop {

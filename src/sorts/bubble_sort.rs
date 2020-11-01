@@ -1,4 +1,4 @@
-pub fn sort(slice: &mut [i32]) {
+pub fn sort<T: Ord>(slice: &mut [T]) {
     let size = slice.len();
     for i in 0..size {
         for j in 1..(size - i) {
